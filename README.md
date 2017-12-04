@@ -2,7 +2,7 @@
 
 # Welcome to General Assembly - Los Angeles!
 
-## WDI-DTLA 55
+## Welcome WDI-DTLA 55
 
 This will be your shared class repo! Guides, in-class labs and code samples, and other resources will live here. **ALL** official resources for this class will live in this repository.
 
