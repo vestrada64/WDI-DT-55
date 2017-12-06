@@ -1,7 +1,5 @@
 # JavaScript Objects Laboratory 
 
-**DO NOT CHANGE ANY VARIABLE OR FUNCTION NAMES. THESE NAMES MUST BE AS IS IN ORDER FOR YOU TO PASS THE TESTS.**
-
 This lab will build upon your knowledge of JavaScript objects and functions. 
 
 There are 8 questions you must complete.
