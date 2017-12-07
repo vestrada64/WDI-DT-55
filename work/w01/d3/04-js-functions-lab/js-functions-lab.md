@@ -48,7 +48,7 @@ console.log(maxOfTwoNumbers(3, 9));
 
 Here are the functions:
 
-1. (_completed above_) Define a function, as a function declaration, `maxOfTwoNumbers` that takes two numbers as arguments and returns the largest of them. If they are the same, return that number. Use the if-then-else construct.
+1. (_completed above_) Define a function, as a function declaration, `maxOfTwoNumbers` that takes two numbers as arguments and returns the largest of them. If they are the same, return that number. Use the if-else construct.
 
 2. Define a function, as a function expression, `maxOfThree` that takes three numbers as arguments and returns the largest of them.
 
