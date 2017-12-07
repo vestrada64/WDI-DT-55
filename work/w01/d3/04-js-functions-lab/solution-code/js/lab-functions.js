@@ -33,6 +33,8 @@ console.log(maxOfThree(5, 10, 1));
 function isCharAVowel(s) {
   s = s.toLowerCase();
   return ('aeiouy'.indexOf(s) > -1);
+  // or use ES2015's string.includes
+  // return 'aeiouy'.includes(s);
 }
 
 console.log(isCharAVowel('b'));
@@ -45,6 +47,7 @@ var sumArray = function(arr) {
     sum += e;
   });
   return sum;
+  // later, you will learn this is a good use case for the reduce method
 };
 
 console.log(sumArray([5, 10, 1]));
@@ -52,7 +55,7 @@ console.log(sumArray([5, 10, 1]));
 // 5.
 function multiplyArray(arr) {
   var product = 1;
-  // feel free to use a for loop if you're not cool
+  // feel free to use a for loop like this if you're not cool
   for (var i = 0; i < arr.length; i++) {
     product *= arr[i];
   }
