@@ -89,7 +89,7 @@ As a reminder, your project's code **must be substantially yours**. Do not copy 
 - **Commit early, commit often.** Don’t be afraid to break something because you can always go back in time to a previous version.
 - **Consult documentation resources** (MDN, jQuery, etc.) to better understand methods, etc.
 - **Theme your game** to make it more unique!
-- Be sure to review the **Peer Code Review Checklist** for important tips - your code will be evaluated using this checklist.
+- Be sure to review the [Peer Code Review Checklist](https://github.com/ga-students/WDI-DT-55/blob/master/projects/project_1/p1_peer_code_review.md) for important tips - your code will be evaluated using this checklist.
 
 ---
 
