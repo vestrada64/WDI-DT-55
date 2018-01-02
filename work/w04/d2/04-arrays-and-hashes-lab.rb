@@ -8,7 +8,7 @@ I recommend that you write these functions in VS Code or whatever the
 text editor of your choice is. To execute the code in this file, navigate
 to the directory that holds this file and enter the following command:
 
-                $ ruby ruby_lab.rb
+                $ ruby 04-arrays-and-hashes-lab.rb
 
 Once you have completed writing these functions YOU SHOULD TEST THEM! Invoke these
 methods on sample inputs to test that they return the correct value.
@@ -75,9 +75,9 @@ puts friends
 # puts_last([1,2,3,4])
 
 # Uncomment test below
-# if (puts_last([1,2,3,4]) != 4)
-#     raise 'puts_last should return the last element in an array'
-# end
+if (puts_last([1,2,3,4]) != 4)
+    raise 'puts_last should return the last element in an array'
+end
 
 
 # Exercise 3. ------------------------------------------------------------------------------------
@@ -311,7 +311,7 @@ For example,
 
 # Exercise 15. ------------------------------------------------------------------------------------
 
-Exercise 11: Let's consider an array of the numbers 1 to n. If n=5 then the input array would be
+Exercise 15: Let's consider an array of the numbers 1 to n. If n=5 then the input array would be
 
                             [1,2,3,4,5]
 
