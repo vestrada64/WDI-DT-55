@@ -92,7 +92,7 @@ to this:
 
 ## Challenge #4: Determine if a Binary Tree is Symmetric 
 
-Write an algorithm to determine is a binary tree is symmetric: 
+Write an algorithm to determine if a binary tree is symmetric: 
 
 This is symmetric:
 
