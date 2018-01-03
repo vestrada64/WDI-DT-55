@@ -53,15 +53,47 @@ puts friends
 =end 
 
 
+# Exercise 1 Solution
+
+friends = [
+    { 
+        name: "Steve", 
+        age: 54
+    },
+    {
+        name: "Shana",
+        age: 22
+    }
+]
+
+puts friends[1][:name]
+
+# What happens when you run the line of code below?
+
+puts friends[0]["age"]
+
+friends.each do |friend|
+    friend[:age] = friend[:age] + 1
+end
+
+# What does the age property of each friend look like now?
+
+puts friends
+
+
 # Exercise 1. ------------------------------------------------------------------------------------
 
 # Write a method named put_arr_elems that logs out each element in an array. You 
 # should use the puts method to do this.
 
-# WRITE CODE HERE
+def put_arr_elems arr 
+    arr.each do |elem|
+        puts elem
+    end
+end
 
 # Uncomment the line below to test out the function
-# put_arr_elems([1,2,3,4])
+put_arr_elems([1,2,3,4])
 
 
 # Exercise 2. ------------------------------------------------------------------------------------
@@ -69,10 +101,12 @@ puts friends
 # Write a method named puts_last that returns the last element in an array.
 # You should use the puts method to do this.
 
-# WRITE CODE HERE
+def puts_last arr 
+    arr.last
+end
 
 # Uncomment the line below to test out the function
-# puts_last([1,2,3,4])
+puts_last([1,2,3,4])
 
 # Uncomment test below
 if (puts_last([1,2,3,4]) != 4)
@@ -88,32 +122,40 @@ example_hash = {javascript: 'language mainly used for client-side scripting',
                 ruby: 'language popularized due to Ruby on Rails',
                 whitespace: 'esoteric programming language that ignores everything but whitespaces'}
 
-# WRITE CODE HERE
+def puts_key hsh
+    hsh.keys
+end 
+
 
 # Uncomment the line below to test out the function
-# puts_key example_hash
+puts puts_key example_hash
 
-# if puts_key(example_hash) != [:javascript, :ruby, :whitespace]
-#     raise 'puts_key should return a list of all keys'
-# end
-
+if puts_key(example_hash) != [:javascript, :ruby, :whitespace]
+    raise 'puts_key should return a list of all keys'
+end
 
 # Exercise 4. ------------------------------------------------------------------------------------
 
 # Write a method named puts_value that puts (i.e., logs out) each value in a hash.
 
-# WRITE CODE HERE
+def puts_value hsh 
+    puts hsh.values
+end
 
 # Uncomment the line below to test out the function.
-# puts_value example_hash
+puts_value example_hash
 
 
 # Exercise 5. ------------------------------------------------------------------------------------
 
 # Write a method named sum that computes and returns the sum of integers in an array.
 
+def sum arr 
+    arr.inject { |sum, n| sum + n }
+end
+
 # Uncomment the line below to test out the function]
-# puts sum([1,2,3]) #=> 6
+puts sum([1,2,3]) #=> 6
 
 
 # Exercise 6. ------------------------------------------------------------------------------------
@@ -122,8 +164,12 @@ example_hash = {javascript: 'language mainly used for client-side scripting',
 # For example, reverse_string("abc") should return "cba". It should take a string as
 # input and return the string in reverse.
 
+def reverse_string str 
+    str.reverse
+end
+
 # Uncomment the line below to test out the function.
-# puts reverse_string("abc") #=> "cba"
+puts reverse_string("abc") #=> "cba"
 
 
 # Exercise 7. ------------------------------------------------------------------------------------
@@ -134,8 +180,18 @@ example_hash = {javascript: 'language mainly used for client-side scripting',
 # {a: 2, b: 1, c: 1}
 # Hint: Use the count method
 
+def charFrequency str
+    freq = {} 
+    
+    str.each_char do |char|
+        freq[char] = str.count(char)
+    end
+
+    return freq
+end
+
 # Uncomment the line below to test out the function.
-# puts charFrequency("aabc") #=> {"a" => 2, "b" => 1, "c" => 1}
+puts charFrequency("aabc") #=> {"a" => 2, "b" => 1, "c" => 1}
 
 
 # Exercise 8. ------------------------------------------------------------------------------------
@@ -144,11 +200,14 @@ example_hash = {javascript: 'language mainly used for client-side scripting',
 # return the third greatest number in the array. You may assume that
 # the array has at least three numbers in it.
 
+def third_greatest arr 
+    arr.sort[-3]
+end
 
 # Uncomment the line below to test out the function.
-# puts third_greatest([5, 3, 7]) == 3 #=> should be true
-# puts third_greatest([5, 3, 7, 4]) == 4 #=> should be true
-# puts third_greatest([2, 3, 7, 4]) == 3 #=> should be true
+puts third_greatest([5, 3, 7]) == 3 #=> should be true
+puts third_greatest([5, 3, 7, 4]) == 4 #=> should be true
+puts third_greatest([2, 3, 7, 4]) == 3 #=> should be true
 
 
 # Exercise 9. ------------------------------------------------------------------------------------
@@ -159,6 +218,12 @@ example_hash = {javascript: 'language mainly used for client-side scripting',
 #
 
 def greatest_common_factor(number1, number2)
+    while number2 != 0
+        temp = number2 
+        number2 = number1 % temp 
+        number1 = temp
+    end
+    return number1
 end
 
 # These are tests to check that your code is working. After writing
@@ -196,7 +261,12 @@ puts("===============================================")
 # challenge.
 
 def is_prime?(number)
-
+    (2..number-1).each do |num|
+        if number % num == 0 
+            return false 
+        end
+    end
+    return true
 end
 
 # These are tests to check that your code is working. After writing
@@ -230,13 +300,33 @@ puts("===============================================")
 #     "abcd".slice(2, 2) == "cd"
 #
 
-def palindrome?(string)
-  
+def longest_palindrome(string) 
+    
+    all_substrings = []
+    arr_string = string.split("")
+    str_len = arr_string.length-1
+
+    arr_string.each_index do |index|
+        curr_string = arr_string[index] 
+        arr_string.slice(index+1, str_len).each do |char|
+    		curr_string += char
+		all_substrings.push(curr_string)
+	end
+    end
+
+    arr_string.each { |elem| all_substrings << elem }
+    all_substrings << string
+   
+    sorted_arr = all_substrings.sort{ |x, y| y.length <=> x.length } 
+    
+    sorted_arr.each do |elem|
+	if elem == elem.reverse 
+		return elem
+	end
+    end
+    false 
 end
 
-def longest_palindrome(string)
-    
-end
 
 # These are tests to check that your code is working. After writing
 # your solution, they should all print true.
