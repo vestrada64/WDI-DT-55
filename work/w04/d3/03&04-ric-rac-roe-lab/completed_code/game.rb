@@ -38,13 +38,9 @@ class Game
     ]
     winner = nil
     win_combos.each do |combo|
-      if @board[combo[0]] && @board[combo[0]] == @board[combo[1]] && @board[combo[0]] == @board[combo[2]]
-        winner = @board[combo[0]]
-        break
-      end
+      return @board[combo[0]] if @board[combo[0]] && @board[combo[0]] == @board[combo[1]] && @board[combo[0]] == @board[combo[2]]
     end
-    return :t unless winner || @board.values.include?(nil)
-    winner
+    @board.values.include?(nil) ? nil : :t
   end
 
   def print_score
