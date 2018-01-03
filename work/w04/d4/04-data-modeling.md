@@ -61,15 +61,9 @@ A **schema** of a table is the table's name, its attribute's names and its attri
 
 ---
 
-## Let's Watch a Video 
-
-This guy is [funnnnnny](https://www.udemy.com/database-design/learn/v4/t/lecture/1490856?start=0).
-
---- 
-
 ## What's a Primary Keys
 
-**Quiz**: Griffin, what is a primary key?
+**Quiz**: What is a primary key?
 
 ---
 
