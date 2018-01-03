@@ -300,12 +300,33 @@ puts("===============================================")
 #     "abcd".slice(2, 2) == "cd"
 #
 
-def palindrome?(string)
+def longest_palindrome(string) 
+    
+    all_substrings = []
+    arr_string = string.split("")
+    str_len = arr_string.length-1
+
+    arr_string.each_index do |index|
+        curr_string = arr_string[index] 
+        arr_string.slice(index+1, str_len).each do |char|
+    		curr_string += char
+		all_substrings.push(curr_string)
+	end
+    end
+
+    arr_string.each { |elem| all_substrings << elem }
+    all_substrings << string
+   
+    sorted_arr = all_substrings.sort{ |x, y| y.length <=> x.length } 
+    
+    sorted_arr.each do |elem|
+	if elem == elem.reverse 
+		return elem
+	end
+    end
+    false 
 end
 
-def longest_palindrome(string)
-    
-end
 
 # These are tests to check that your code is working. After writing
 # your solution, they should all print true.
