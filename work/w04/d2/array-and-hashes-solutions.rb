@@ -261,7 +261,12 @@ puts("===============================================")
 # challenge.
 
 def is_prime?(number)
-
+    (2..number-1).each do |num|
+        if number % num == 0 
+            return false 
+        end
+    end
+    return true
 end
 
 # These are tests to check that your code is working. After writing
@@ -296,7 +301,6 @@ puts("===============================================")
 #
 
 def palindrome?(string)
-  
 end
 
 def longest_palindrome(string)
