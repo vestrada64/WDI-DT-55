@@ -300,31 +300,31 @@ puts("===============================================")
 #     "abcd".slice(2, 2) == "cd"
 #
 
+def palindrome?(string)
+    string == string.reverse
+end
+
 def longest_palindrome(string) 
     
-    all_substrings = []
-    arr_string = string.split("")
-    str_len = arr_string.length-1
+    best_palindrome = nil
+    start = 0
 
-    arr_string.each_index do |index|
-        curr_string = arr_string[index] 
-        arr_string.slice(index+1, str_len).each do |char|
-    		curr_string += char
-		all_substrings.push(curr_string)
-	end
+    while start < string.length 
+        length = 1
+        while (start + length) <= string.length
+            subs = string.slice(start, length)
+            
+            if palindrome?(subs) && (!best_palindrome || subs.length > best_palindrome.length)
+                best_palindrome = subs
+            end
+
+            length += 1
+        end
+        start += 1
     end
 
-    arr_string.each { |elem| all_substrings << elem }
-    all_substrings << string
+    best_palindrome
    
-    sorted_arr = all_substrings.sort{ |x, y| y.length <=> x.length } 
-    
-    sorted_arr.each do |elem|
-	if elem == elem.reverse 
-		return elem
-	end
-    end
-    false 
 end
 
 
@@ -355,6 +355,11 @@ puts("===============================================")
 # string in the order specified by the indices of the array of indices.
 
 def scramble_string(string, positions)
+    scrambled = ""
+    positions.each do |position|
+        scrambled << string[position]
+    end
+    scrambled
 end
 
 # These are tests to check that your code is working. After writing
