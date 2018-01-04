@@ -48,7 +48,7 @@ Some terms you should be aware of:
 There are some rules a Binary Search Tree obeys:
 
     1. The values of the nodes in the left subtree are less than the values of the parent node
-    2. The value of the nodes in the right subtree are less than the values of the parent node
+    2. The value of the nodes in the right subtree are greater than the values of the parent node
     3. There are no nodes with the same values
 
 ## Exercises 
