@@ -8,7 +8,7 @@
 class Stack 
 
 	def initialize 
-		@items = []
+		@items ||= []
 	end
 
 	def push(val)

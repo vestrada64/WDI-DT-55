@@ -2,6 +2,8 @@
 
 Pedagogical goal: Be able to use object-orientated concepts in Ruby to implement fundamental data structures and be introduced to basic Computer Science concepts.
 
+![morning](./images/morning.png)
+
 ## Introduction 
 
 **Data structures** are abstract representations of the structure and relationsips between data. We are going to be implementing a few fundamental data structures in Ruby to gain practice with Ruby and learn computer science. We will be implementing the following data structures: 
