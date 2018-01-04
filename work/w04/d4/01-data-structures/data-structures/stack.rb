@@ -21,7 +21,7 @@ class Stack
 	end
 
 	def isEmpty 
-		@items.lengthi == 0
+		@items.length == 0
 	end
 end 
 

@@ -29,8 +29,24 @@ class BinaryTreeNode
 		@right
 	end
 
-	def find_node(value, root)
-		# Write code here
+	def find_node(value, node)
+
+		if node.value == value
+			return true
+		end
+
+		if node.left.nil? && node.right.nil?
+			return false 
+		end
+
+		if value < node.value
+			return find_node(value, node.left)
+		end
+
+		if node.value < value 
+			return find_node(value, node.right)
+		end
+
 	end
 end
 
@@ -59,4 +75,7 @@ three = two.insert_right(3)
 six = seven.insert_left(6)
 nine = seven.insert_right(9)
 
-puts bst.inspect #=> returns the entire Binary Search Tree 
+# puts bst.inspect #=> returns the entire Binary Search Tree 
+
+puts bst.find_node(6, bst).inspect
+puts bst.find_node(12, bst).inspect

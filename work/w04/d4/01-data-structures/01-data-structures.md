@@ -82,9 +82,9 @@ reaches a bottom or **leaf** node.
 
 If you finish the exercises above do these. 
 
-#### Invert a Binary Search Tree
+#### Invert a Tree
 
-Invert a binary tree. This should be a method on the `BinaryTreeNode` class.
+Invert a tree. This should be a method on the `BinaryTreeNode` class.
 
 Go from this: 
 

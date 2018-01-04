@@ -11,11 +11,12 @@ class Queue
     end
 
     def enqueue value
-        # Write your code here
+        @items.push(value)
     end
 
     def dequeue 
-        # Write your code here
+        @items.shift
+        @items
     end
 
     def isEmpty 
@@ -27,4 +28,4 @@ end
 qu = Queue.new 
 puts qu.enqueue(5).inspect #=> [5]
 puts qu.enqueue(67).inspect #=> [5, 67]
-puts qu.dequeue #=> [67]
+puts qu.dequeue.inspect #=> [67]
