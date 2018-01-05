@@ -43,7 +43,7 @@ class BinaryTreeNode
 			return find_node(value, node.left)
 		end
 
-		if node.value < value 
+		if value > node.value 
 			return find_node(value, node.right)
 		end
 
