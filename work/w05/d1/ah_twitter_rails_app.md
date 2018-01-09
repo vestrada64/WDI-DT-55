@@ -29,7 +29,7 @@ The application is going to be called `rails_twitter`.
 
 - `rails_twitter` is going to be a full-CRUD app, capable of displaying, creating, updating and deleting tweets.
 
-- Since our app is a CRUD app, we're going to need to generate a single model - `Tweet`. The `Tweet` model with have two attributes `handle` (string) and `content` (text).
+- Since our app is a CRUD app, we're going to need to generate a single model - `Tweet`. The `Tweet` model will have two attributes `handle` (string) and `content` (text).
 
 - Create a controller, naming it using Rails' convention for naming controllers for resources.
 
