@@ -1,0 +1,5 @@
+<h1>Showing <%= @tweet.handle %>'s Tweet </h1>
+
+
+<h5><b>Content</b>: <%= @tweet.content %></h5>
+<h6>Made on <%= @tweet.created_at.to_formatted_s(:long_ordinal) %></h6>

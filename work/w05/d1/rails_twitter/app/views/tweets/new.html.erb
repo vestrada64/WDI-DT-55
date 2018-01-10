@@ -1,0 +1,13 @@
+<%= form_for @tweet do |f| %>
+    <div>
+        <%= f.label :handle %>
+        <%= f.text_field :handle %>
+    </div>
+    <div>
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+    </div>
+
+    <%= f.submit "Add New Bean!" %>
+
+<% end %>

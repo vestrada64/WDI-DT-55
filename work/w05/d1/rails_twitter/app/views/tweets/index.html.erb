@@ -1,0 +1,12 @@
+<h3>Tweets Index Page</h3>
+
+<ul>
+    <% @tweets.each do |tweet| %>
+        <li>
+            <%= tweet.handle %> : <%= tweet.content %> |
+            <%= link_to "Delete",  tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?" } %> |
+            <%= link_to "Show", tweet_path(tweet) %> |
+            <%= link_to "Edit", edit_tweet_path(tweet) %>
+        </li>
+    <% end %> 
+</ul>
