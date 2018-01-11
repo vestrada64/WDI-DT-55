@@ -14,7 +14,7 @@ Basically, Paperclip makes it easy to add the "Upload File" functionality to you
 
 ### Configuration
 
-To get Paperclip working on our Machines we need to install a dependency that Paperclip will be looking for called `ImageMagik`. Installing `ImageMagik` using Homebrew is easy:
+To get Paperclip working on our Machines we need to install a dependency that Paperclip will be looking for called `ImageMagick`. Installing `ImageMagick` using Homebrew is easy:
 
 ```bash
 $ brew install imagemagick
