@@ -656,4 +656,4 @@ As an exercise finish edit, update and destroy.
 
 ## C. Conclusion
 
-You have now seen how a simple CRUD application using Node and Express can be built. Later on we will use a document database called MongoDB to persist information instead of a JavaScript object. If you'd like to learn more about HTTP transcations in Node read [this](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/). Understanding the contents of this article will help you understand how Node handles HTTP requests.
+You have now seen how a simple CRUD application using Node and Express can be built. Later on we will use a document database called MongoDB to persist information instead of a JavaScript object. If you'd like to learn more about HTTP transactions in Node read [this](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/). Understanding the contents of this article will help you understand how Node handles HTTP requests.
