@@ -59,7 +59,7 @@ We'll first give the `Scientist` model the following attributes:
 
 `rails g model Scientist name discipline mad:boolean`
 
-**Don't run the migration yet!**
+**Don't run the migration yet!** We're not going to run the migrations until we've generated all three models...
 
 As this is the base of our relationships, the Scientist model is the **one** side of the association.  Accordingly, the schema will not require a foreign key.
 
@@ -100,7 +100,9 @@ The `scientist:references` will result in a foreign-key column named `scientist_
 
 However, if the `Scientist` model does not exist, this will trigger an error when the migration is run - this is why we generated the `Scientist` first!
 
-Let's generate another migration before we migrate the one we just did.
+> Note the importance of the sequencing of migrations!
+
+Let's generate the last migration before we `rails db:migrate`...
 
 #### `Log`
 
@@ -295,7 +297,7 @@ Notice that we put a nested resource within a Ruby code block (`do ... end`).
 
 Let's `rails routes` again.
 
-Holy Human Experiments that's a lot of routes!
+Holy Mad Experiments that's a lot of routes!
 
 <img src="https://i.imgur.com/vfilCpH.png">
 
@@ -421,11 +423,13 @@ Setting both the `@scientist` and `@experiment` instance variables is of course 
 
 The form would correctly look like something like this:
 
+<img src="https://i.imgur.com/nGDag0L.png">
+
 #### Practice Exercise
 
-To see this in action let's code the `scientists#show` action that, in addition to displaying a particular scientist, includes a `form` under the scientist's details to create an experiment for that scientist.
+To see this in action let's code the `scientists#show` action that, in addition to displaying a particular scientist, includes the above `form` under the scientist's details to create an experiment for that scientist.
 
-The routes are done, best start by creating a controller...
+The routes are done, best start by creating a controller with a `show` action...
 
 Don't worry about styling (yes, "jagged" forms are okay for this exercise).
 
