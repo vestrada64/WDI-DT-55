@@ -341,9 +341,9 @@ var express = require('express');
 var router = express.Router();
 var shoes = require('./../controllers/shoesController');
 
-router.get('/', shoes.index);
-router.get('/new', shoes.new);
-router.post('/', shoes.create);
+router.get('/shoes', shoes.index);
+router.get('/shoes/new', shoes.new);
+router.post('/shoes', shoes.create);
 
 
 module.exports = router;
