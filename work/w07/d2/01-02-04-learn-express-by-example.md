@@ -596,10 +596,10 @@ You now have the index, new and create actions done! Yayayayayay!!!!!
 Let's add four more routes in `routes/shoes.js`:
 
 ```js
-router.get('/:id', shoes.show);
-router.get('/:id/edit', shoes.edit);
-router.put('/:id', shoes.update);
-router.delete('/:id', shoes.destroy);
+router.get('/shoes/:id', shoes.show);
+router.get('/shoes/:id/edit', shoes.edit);
+router.put('/shoes/:id', shoes.update);
+router.delete('/shoes/:id', shoes.destroy);
 ```
 
 ### B.7 Writing our show Action
