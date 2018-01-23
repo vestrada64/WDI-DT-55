@@ -254,11 +254,11 @@ Inside of `Shoe.js` we must write a few model methods. Remember a model's respon
 
 * `addShoe` takes 3 arguments (name, year, description)
 and adds a shoe to our "database"
-* `deleteshoe` takes a shoe ID and deletes the shoe from the database
+* `deleteShoe` takes a shoe ID and deletes the shoe from the database
 * `updateshoe` takes 4 arguments (id, name, year, description)
 and updates the corresponding record in our "database"
 * `getAllshoes` returns all shoes from the database
-* `getshoe` takes a shoe id and returns the corresponding data for that shoe in JSON form
+* `getShoe` takes a shoe id and returns the corresponding data for that shoe in JSON form
 
 Let's implement our models:
 
