@@ -35,7 +35,7 @@ Today as a class we're going to create our first full CRUD application using Exp
 }
 ```
 
-### A.2 An Re-Introduction to Middleware
+### A.2 A Re-Introduction to Middleware
 
 Express allows you to write server-side code that responds to HTTP requests. Express at its core really only does two things:
 
