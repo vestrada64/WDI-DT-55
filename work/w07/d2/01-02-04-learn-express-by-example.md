@@ -265,7 +265,7 @@ Let's implement our models:
 ```js
 const db = require('./../db/db');
 
-modelMethods = {
+const modelMethods = {
 
   primaryKey: 1,
 
@@ -295,7 +295,7 @@ modelMethods = {
      // You do
   },
 
-  deleteshoe:  function(id) {
+  deleteShoe:  function(id) {
     // You do
   }
 
