@@ -355,7 +355,7 @@ What's happening in the code snippet above? We are defining 3 RESTful routes usi
 router.METHOD(PATH, CALLBACK)
 ```
 
-`METHOD` refers to an HTTP method (e.g., `get`, `put`, `post, `delete`). `PATH` refers to a URI that request will be made to. `CALLBACK` refers to some callback that will be executed when that route it hit. Once we define all of our routes we will have a JS object called `shoes` with 7 methods in it:
+`METHOD` refers to an HTTP method (e.g., `get`, `put`, `post`, `delete`). `PATH` refers to a URI that request will be made to. `CALLBACK` refers to some callback that will be executed when that route it hit. Once we define all of our routes we will have a JS object called `shoes` with 7 methods in it:
 
 * `index`
 * `new`
@@ -438,6 +438,8 @@ module.exports = shoesController = {
   destroy: function(req, res, next) {
     // You do
   }
+
+}
 ```
 Later on you will have to write the `delete`, `update`, `show` and `edit` actions.
 
