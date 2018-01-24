@@ -35,7 +35,7 @@ Today as a class we're going to create our first full CRUD application using Exp
 }
 ```
 
-### A.2 An Re-Introduction to Middleware
+### A.2 A Re-Introduction to Middleware
 
 Express allows you to write server-side code that responds to HTTP requests. Express at its core really only does two things:
 
@@ -254,18 +254,18 @@ Inside of `Shoe.js` we must write a few model methods. Remember a model's respon
 
 * `addShoe` takes 3 arguments (name, year, description)
 and adds a shoe to our "database"
-* `deleteshoe` takes a shoe ID and deletes the shoe from the database
+* `deleteShoe` takes a shoe ID and deletes the shoe from the database
 * `updateshoe` takes 4 arguments (id, name, year, description)
 and updates the corresponding record in our "database"
 * `getAllshoes` returns all shoes from the database
-* `getshoe` takes a shoe id and returns the corresponding data for that shoe in JSON form
+* `getShoe` takes a shoe id and returns the corresponding data for that shoe in JSON form
 
 Let's implement our models:
 
 ```js
 const db = require('./../db/db');
 
-modelMethods = {
+const modelMethods = {
 
   primaryKey: 1,
 
@@ -295,7 +295,7 @@ modelMethods = {
      // You do
   },
 
-  deleteshoe:  function(id) {
+  deleteShoe:  function(id) {
     // You do
   }
 
@@ -314,15 +314,15 @@ module.exports = modelMethods;
 
 These are our routes for our application:
 
-|URI       |Action Controller|HTTP Verb|
-|----------|-----------------|---------|
-| /        | index           | GET     |
-| /new     | new             | GET     |
-| /        | create          | POST    |
-| /:id     | show            | GET     |
-|/:id/edit | edit            | GET     |
-|/:id      | update          | PUT     |
-|/:id      | destroy         | DELETE  |
+|URI              |Action Controller|HTTP Verb|
+|-----------------|-----------------|---------|
+| /shoes          | index           | GET     |
+| /shoes/new      | new             | GET     |
+| /shoes          | create          | POST    |
+| /shoes/:id      | show            | GET     |
+| /shoes/:id/edit | edit            | GET     |
+| /shoes/:id      | update          | PUT     |
+| /shoes/:id      | destroy         | DELETE  |
 
 In an Express application **we typically have one routing file per resource**, therefore let's rename one of our routing files to `shoes.js` so we have have a routing file for our shoes resource. 
 
@@ -341,9 +341,9 @@ var express = require('express');
 var router = express.Router();
 var shoes = require('./../controllers/shoesController');
 
-router.get('/', shoes.index);
-router.get('/new', shoes.new);
-router.post('/create', shoes.create);
+router.get('/shoes', shoes.index);
+router.get('/shoes/new', shoes.new);
+router.post('/shoes', shoes.create);
 
 
 module.exports = router;
@@ -355,7 +355,7 @@ What's happening in the code snippet above? We are defining 3 RESTful routes usi
 router.METHOD(PATH, CALLBACK)
 ```
 
-`METHOD` refers to an HTTP method (e.g., `get`, `put`, `post, `delete`). `PATH` refers to a URI that request will be made to. `CALLBACK` refers to some callback that will be executed when that route it hit. Once we define all of our routes we will have a JS object called `shoes` with 7 methods in it:
+`METHOD` refers to an HTTP method (e.g., `get`, `put`, `post`, `delete`). `PATH` refers to a URI that request will be made to. `CALLBACK` refers to some callback that will be executed when that route it hit. Once we define all of our routes we will have a JS object called `shoes` with 7 methods in it:
 
 * `index`
 * `new`
@@ -394,7 +394,7 @@ app.use('/', index);
 to: 
 
 ```js
-app.use('/', shoes);
+app.use('/shoes', shoes);
 
 ```
 
@@ -410,11 +410,11 @@ const model = require('./../models/Shoe');
 module.exports = shoesController = {
 
   index: function(req, res, next) {
-    res.render('./shoes/index', { shoes: model.getAllShoes() });
+    res.render('shoes/index', { shoes: model.getAllShoes() });
   },
 
   new: function(req, res, next) {
-    res.render('./shoes/new');
+    res.render('shoes/new');
   },
 
   create: function(req, res, next) {
@@ -438,10 +438,12 @@ module.exports = shoesController = {
   destroy: function(req, res, next) {
     // You do
   }
+
+}
 ```
 Later on you will have to write the `delete`, `update`, `show` and `edit` actions.
 
-We use `res.render(views, [options])` to render our views. We can pass optional local variables to our views in a JavaScript object using `res.render()`. `res.render()` renders our views while passing (optional) local variables to our views which can then access using `EJS`.
+We use `res.render(view, [options])` to render our views. We can pass optional local variables to our views in a JavaScript object using `res.render()`. `res.render()` renders our views while passing (optional) local variables to our views which can then access using `EJS`.
 
 ### B.5 Index, New and Create View Templates
 
@@ -541,7 +543,7 @@ Our `new.ejs` should look like this:
 
 <h1>New Shoe</h1>
 
-<form action="/create" method="POST">
+<form action="/shoes" method="POST">
   <label>Shoe Name</label>
   <input type="text" name="shoeName"><br>
   <br>
@@ -571,15 +573,14 @@ Our `index.ejs` should look like this:
       <h3><%= shoes[key].name %></h3>
       <h4><%= shoes[key].year %></h4>
       <p><%= shoes[key].description %></p>
-      <a href='/<%= key %>'><button>Show</button></a>
+      <a href='/shoes/<%= key %>'><button>Show</button></a>
       <br>
       <br>
-        <a href='/<%= key %>/edit'><button>Edit</button></a>
+        <a href='/shoes/<%= key %>/edit'><button>Edit</button></a>
       <br>
       <br>
-      <form method="POST" action="/<%= key %>?_method=DELETE">
-        <input type="hidden" name="_method" value="delete"/>
-        <button class="delete" type="submit" name="shoeId" value="<%= key %>">Delete</button>
+      <form method="POST" action="/shoes/<%= key %>?_method=DELETE">
+        <button class="delete" type="submit">Delete</button>
       </form>
       <hr>
       <br>
@@ -595,10 +596,10 @@ You now have the index, new and create actions done! Yayayayayay!!!!!
 Let's add four more routes in `routes/shoes.js`:
 
 ```js
-router.get('/:id', shoes.show);
-router.get('/:id/edit', shoes.edit);
-router.put('/:id', shoes.update);
-router.delete('/:id', shoes.destroy);
+router.get('/shoes/:id', shoes.show);
+router.get('/shoes/:id/edit', shoes.edit);
+router.put('/shoes/:id', shoes.update);
+router.delete('/shoes/:id', shoes.destroy);
 ```
 
 ### B.7 Writing our show Action
@@ -613,7 +614,7 @@ You now have all the ingredients to set up the `show` action. The `show` route i
 
 ### B.8.i Method Override
 
-Natively HTML forms [don't](http://stackoverflow.com/questions/5177595/why-dont-the-modern-browsers-support-put-and-delete-form-methods) actually support all of the HTTP verbs we've grown accustomed to in Rails. We must use a polyfill  called `method-override` to be able to make `DELETE` and `PUT` requests. Let's install the module using npm:
+Natively HTML forms [don't](http://stackoverflow.com/questions/5177595/why-dont-the-modern-browsers-support-put-and-delete-form-methods) actually support all of the HTTP verbs we've grown accustomed to in Rails. We must use a module called `method-override` to be able to make `DELETE` and `PUT` requests. Let's install the module using npm:
 
 ```bash
 $ npm install method-override --save
