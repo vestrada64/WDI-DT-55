@@ -261,5 +261,5 @@ The `populate` allows you to access another document in a given collection other
 Here are some guidelines to consider when deciding on referencing vs embedding from the MongoDB docs:
 
 > **Tip One**: Favor embedding unless there is a compelling reason not to<br>
-> **Tip Two**: Needing to access an object on its own is a compelling reason not to embed it
+> **Tip Two**: Needing to access an object on its own is a compelling reason not to embed it<br>
 > **Tip Three**: As always with MongoDB, how you model your data depends – entirely – on your particular application’s data access patterns. You want to structure your data to match the ways that your application queries and updates it
