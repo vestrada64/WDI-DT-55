@@ -1,0 +1,6 @@
+<% users.forEach((user) => { %>
+    <p><%= user.name %></p>
+    <a href="/users/<%= user._id %>">Show</a>
+<% }) %>
+
+<a href="/users/new">New</a>
