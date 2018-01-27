@@ -21,6 +21,8 @@ Work independently as much as possible, however, collaborate as needed.
 
 Successful completion of this lab is important to getting ready for project 3, so work on it over the weekend if need be.
 
+**This lab is mandetory!**  Please create a repo and push your commits to GitHub.
+
 ## Getting Started
 
 1. Use the `express` generator to scaffold an Express app that uses EJS templating.
@@ -61,7 +63,7 @@ For example, if the app needs to display student(s) with their courses populated
 ```js
 var studentSchema = new mongoose.Schema({
 	name: String,
-	courses: [mongoose.Schema.Types.ObjectId, ref: 'Course']
+	courses: [{type: mongoose.Schema.Types.ObjectId, ref: 'Course'}]
 });
 ```
 
@@ -79,7 +81,7 @@ Similarly, if you would like to be able to query Courses and have each course(s)
 ```js
 var courseSchema = new mongoose.Schema({
 	name: String,
-	students: [mongoose.Schema.Types.ObjectId, ref: 'Student']
+	students: [{type: mongoose.Schema.Types.ObjectId, ref: 'Student'}]
 });
 ```
 
