@@ -32,7 +32,7 @@ ___
 
 #### Step 2 - Click 'Create a new issue'
 
-![image](images/create_issue.png)
+<img src="https://i.imgur.com/370oSLZ.png">
 ___
 
 #### Step 3 - Describe the Issue
@@ -44,11 +44,15 @@ ___
 	- **Attempted Resolution**
 - Include enough information that it's possible to *reproduce the error*.
 
+<img src="https://i.imgur.com/4iVsvMy.png">
+
 ___
 
 #### Step 4 - Assign Instructors to the Issue
 
 Click the button to assign instructors to the issue.  This will notify instructors that assistance is necessary.
+
+<img src="https://i.imgur.com/2F0JKrd.png">
 
 ___
 
