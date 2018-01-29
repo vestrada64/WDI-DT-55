@@ -47,7 +47,7 @@ Working in a team is going to require more "upfront" planning...
 #### Your app must:
 
 - Be a fullstack **Node/Express** application.
-- Persist data in **MongoDB** and perform CRUD using **Express**.
+- Persist data in **MongoDB** and perform CRUD using **Mongoose**.
 - **Consume data made available by a third-party API - libraries like Google Maps that do not expose data do not qualify**.
 - **Produce a RESTful API that exposes at least one resource (model)**.  At a minimum, API endpoints must be implemented for model's **index** (collection) and **show** (item) REST methods.
 - **Authenticate users using an OAuth provider**.
@@ -111,6 +111,16 @@ Working in a team is going to require more "upfront" planning...
 - Definitely research potential third-party APIs.  You are required to consume one and knowing what APIs are available may trigger some great app ideas.
 - For this project, we want you to work with your team to build a creative product or one that improves on an existing app.
 - One of the best questions to ask yourself is, "Why would I want to use this app?"
+
+---
+
+### Obtaining Assistance from an Instructor
+
+During this project, we will be taking advantage of a popular feature of GitHub - GitHub Issues.
+
+GitHub Issues are the way many teams track development between a project's contributors.
+
+Please refer to markdown in the class repository for details...
 
 ---
 
