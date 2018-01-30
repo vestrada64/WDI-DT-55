@@ -160,7 +160,7 @@ var promise = new Promise(function(resolve, reject) {
 
 ### then
 
-Once a promise has either `resolved` or `rejected` you can do *something* with it. For example if you are making an API call you can:
+Once a promise has either been `resolved` or `rejected` you can do *something* with it. For example if you are making an API call you can:
 
   * If resolved you can take the data returned by the API call and display it to the user
   * If rejected you can re-make the API call or do some other error handling
