@@ -88,6 +88,7 @@ Working in a team is going to require more "upfront" planning...
       retro) and manager of Trello.
     - **GitHub Manager**: the primary person for managing the repo and GitHub  team workflow (merging pull requests, etc.).
     - **Documenter**: the person in charge of the README, etc.
+    - **API Manager**: the person in charge of researching, registering with, etc. APIs.
     - **Designer**: the person in charge of UI design/layout and styling.
     - **Database manager**: this person will be in charge of creating and
       managing the models and their relationships.
