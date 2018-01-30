@@ -111,4 +111,3 @@ Use [this API](https://github.com/jtamsut/REST-api) to build a simple web applic
 ![post blog](./../images/post_blog.jpg)
 
 Use  `setInterval` to "refresh" the list of posts every minute. [This](https://www.w3schools.com/jsref/met_win_setinterval.asp) is some information on `setInterval` that might be useful.
-

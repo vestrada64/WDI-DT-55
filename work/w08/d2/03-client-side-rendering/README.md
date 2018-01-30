@@ -215,4 +215,3 @@ Now let's go through an example of rendering data from the [JSON Placeholder API
 - Underscore templates are very similar to `erb` or `ejs`
 - They offer flexibility to write them how you want
 - You must escape them when pairing with `ejs` like we showed above
-
