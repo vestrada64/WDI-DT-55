@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Client Side Rendering</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+</head>
+<body>
+
+    <div id="anchor"></div>
+
+    <script type="text/template" id="template">
+        <h1>Users</h1>
+  
+        <% users.forEach(function(user) { %>
+            <h3><%= user.name %></h3>
+        <% }) %>
+
+    </script>
+
+    <script>
+
+        $template = document.querySelector('#template');
+        $anchor = document.querySelector('#anchor');
+
+        let template = _.template($template.innerHTML);
+
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(res => res.json())
+            .then(function(data){
+                $anchor.innerHTML = template({users: data});
+            });
+
+    </script>
+    
+</body>
+</html>
