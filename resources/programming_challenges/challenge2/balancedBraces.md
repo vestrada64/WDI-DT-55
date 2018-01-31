@@ -4,7 +4,7 @@
 
 ## Prompt 
 
-Write a function called `balancedBraces` that accepts a single string as argument. The input string is composed entirely of parentheses (`(` and `)`), brackets (`[` and `]`) and/or curly braces (`{` and `}`). The `balancedBraces` function should return `true` is the braces are "matched" and `false` if they are not "matched".
+Write a function called `balancedBraces` that accepts a single string as argument. The input string is composed entirely of parentheses (`(` and `)`), brackets (`[` and `]`) and/or curly braces (`{` and `}`). The `balancedBraces` function should return `true` if the braces are "matched" and `false` if they are not "matched".
 
 Two brackets are considered to be a "matched" pair if the opening bracket (i.e., `(`, `[`, or `{`) occurs to the left of a closing bracket (i.e., `)`, `]`, or `}`) of the exact same type. There are three types of matched pairs of brackets: `[]`, `{}`, and `()`.
 
