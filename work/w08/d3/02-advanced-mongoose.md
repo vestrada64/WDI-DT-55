@@ -169,9 +169,9 @@ Once that is done let's define a schema for our Food model. A item of food will 
 * shelfLife (Number)
 
 ```javascript
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var foodSchema = new mongoose.Schema({
+const foodSchema = new mongoose.Schema({
   name: {
     type: String, 
     required: true
