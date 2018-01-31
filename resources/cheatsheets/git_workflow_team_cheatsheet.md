@@ -168,7 +168,6 @@ Articles and tutorials on branching and workflows in Git:
 
 - [Git Branching][atlassian-branches]
 - [Common Git Workflows][atlassian-workflows]
-- [Merging vs Rebasing Workflows][atlassian-merge-rebase] ('Conceptual Overiew' section)
 - [In-depth Discussion of a Workflow][in-depth-workflow]
 - ['Reset Demystified'][git-scm-blog-reset] (helps to understand the structures of Git)
 - **[A Git Branching visualization game!][git-viz-game]**
@@ -180,7 +179,6 @@ Articles and tutorials on branching and workflows in Git:
 [branching-deck]:         https://docs.google.com/presentation/d/1tE0D8F-TNNG36tjCN-H1hzhjAb2rWknGcohEESaPW08/edit#slide=id.p
 [atlassian-branches]:     https://www.atlassian.com/git/tutorials/using-branches
 [atlassian-workflows]:    https://www.atlassian.com/git/tutorials/comparing-workflows
-[atlassian-merge-rebase]: https://www.atlassian.com/git/tutorials/merging-vs-rebasing
 [in-depth-workflow]:      http://nvie.com/posts/a-successful-git-branching-model
 [git-scm-blog-reset]:     https://git-scm.com/blog/2011/07/11/reset.html
 [git-viz-game]:           http://pcottle.github.io/learnGitBranching
