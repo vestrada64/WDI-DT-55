@@ -22,9 +22,10 @@ To help illustrate collaborating on a project using Git/GitHub, consider the fol
 1. Identify the repo created by your manager on GitHub.
 2. Fork the repo to your own account.
 3. Use `$ git clone <link to your repo>` to copy **your** forked repo locally. Obtain the link to your repo by clicking the green "Clone or download" button.
-4. Now add a link to the manager's repo as well: `$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git`
-5. Ensure that you have two remotes named `origin` & `upstream`: `$ git remote -v`
-6. Ensure you are notified of changes to the project by clicking the **Watch** button near the top right of the manager's repo.  Then make sure you GitHub account's notification settings are adjusted to notify you via email, etc.
+4. `cd` into the newly created project folder.
+5. Now add a link to the manager's repo as well: `$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git`
+6. Ensure that you have two remotes named `origin` & `upstream`: `$ git remote -v`
+7. Ensure you are notified of changes to the project by clicking the **Watch** button near the top right of the manager's repo.  Then make sure you GitHub account's notification settings are adjusted to notify you via email, etc.
 
 ### Working on Feature Branches
 
@@ -60,8 +61,9 @@ To help illustrate collaborating on a project using Git/GitHub, consider the fol
 
 1. Try to divide up work so that programmers don't make changes to the same file between merges. 
 2. When notified that branches have been merged into `master` by the manager, **immediately** bring your local repo up to date so that you are working with the latest and greatest:
+	- We're going to need to checkout the master branch to update it, however, _sometimes_ Git will not allow us checkout a different branch if there are uncommitted changes in the current branch.  The solution is to either `stash` or `commit` the changes first. Please read [this StackOverflow](https://stackoverflow.com/questions/22053757/checkout-another-branch-when-there-are-uncommitted-changes-on-the-current-branch) for how to resolve this scenario if Git does not allow the next step (`$ git checkout master`).
 	- `$ git checkout master`
-	- `$ git pull upstream master` **Manager uses `origin` instead of `upstream`
+	- `$ git pull upstream master` **Manager** uses `origin` instead of `upstream`
 	- `$ git checkout <feature_branch_name>`
 	- `$ git merge master` This brings the latest code into your feature branch so that you are always developing with the latest and greatest.
 3. Making frequent and small commits and pull requests will help minimize merge conflicts.
