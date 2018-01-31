@@ -51,6 +51,7 @@
 
         // Function get posts and adds them to the DOM
         function getPosts() {
+            console.log('getPosts is called!')
             let posts = "";
             fetch('https://limitless-inlet-95591.herokuapp.com/api/posts')
             .then(data => data.json())
