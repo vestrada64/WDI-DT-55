@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Lab</title>
+</head>
+<body>
+
+    <center>
+        <input id="title" type="text" placeholder="Add title here.."><br>
+        <textarea id="content" cols="100" rows="10" placeholder="Type a new post here..."></textarea><br>
+        <input id="submitButton" type="submit" value="submit">
+    </center>
+
+    <ul id="posts"></ul>
+
+    <script>
+
+        const rootAPI = 'https://limitless-inlet-95591.herokuapp.com';
+
+        let postsNode = document.getElementById('posts');
+        let submitButton = document.getElementById('submitButton');
+        let contentNode = document.getElementById('content');
+        let titleNode = document.getElementById('title');
+
+        // Code for submitting post
+        submitButton.addEventListener('click', function() {
+            let title = titleNode.value;
+            let content = contentNode.value;
+
+            fetch(`${rootAPI}/api/posts`, {
+                method: 'post', 
+                body: JSON.stringify({
+                    "title": title, 
+                    "content": content
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(() => getPosts());
+        })
+
+        // Delete post
+        postsNode.addEventListener('click', function(evt) {
+            fetch(`${rootAPI}/api/posts/${evt.target.dataset.id}`, {
+                method: 'delete'
+            })
+        });
+
+        // Function get posts and adds them to the DOM
+        function getPosts() {
+            let posts = "";
+            fetch('https://limitless-inlet-95591.herokuapp.com/api/posts')
+            .then(data => data.json())
+            .then(function(data) {
+                data.forEach(function(datum){
+                    posts += `<li>${datum.title}:&nbsp;<em>${datum.content}</em>
+                                <button data-id="${datum._id}" class="remove-button">Delete Post</button>
+                              </li>`
+                })
+                postsNode.innerHTML = posts;
+            });
+        };
+
+        // Call getPost once initially
+        getPosts();
+
+        // Call getPost() every 3 seconds
+        setInterval(function() {
+            getPosts();
+        }, 3000);
+
+    </script>
+
+</body>
+</html>
