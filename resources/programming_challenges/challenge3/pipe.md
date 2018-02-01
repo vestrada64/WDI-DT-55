@@ -29,5 +29,5 @@ function divideBy2(n){
 }
 
 const addOneAndDivideBy2 = pipe(addOne, divideBy2) //=> returns [Function]
-addOneAndDivideBy2(3) //=> returns 4
+addOneAndDivideBy2(3) //=> returns 2
 ```
