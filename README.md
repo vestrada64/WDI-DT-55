@@ -160,3 +160,5 @@ When you complete our program with passing status, you unlock our alumni perks:
   - Join our [GA LA Alumni Facebook](https://www.facebook.com/groups/GALAalumni/) channel for networking and job opportunities
   - Look out for a Monthly Alumni Newsletter sent to your email about upcoming alumni only events in LA
 - *Interested in being on our alumni committee to plan upcoming networking and social events for GA alumni? Email [studentservicesla@generalassemb.ly](studentservicesla@generalassemb.ly)*
+
+Welcome!
