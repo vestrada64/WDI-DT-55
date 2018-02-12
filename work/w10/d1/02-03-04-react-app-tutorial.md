@@ -168,7 +168,7 @@ ReactDOM.render(<Board />, document.getElementById('root'));
 
 All of the HTML code written inside the `render()` method of our class is JSX. JSX is a React-specific language for specifying mark-up in a JavaScript file. You will be writing *a lot* of JSX today.
 
-**All class components must have a render method that returns a single DOM node**.
+**All class components must have a render method that returns a single DOM node, except for DOM fragments**.
 
 We just created our first React application. The `ReactDOM.render()` method takes 2 arguments:
 
