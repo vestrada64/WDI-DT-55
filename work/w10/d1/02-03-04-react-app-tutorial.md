@@ -1,5 +1,18 @@
 # Building Your First React App: A Tutorial
 
+But first a poetic offering...
+
+```
+Today we learn React, 
+Virtual DOM, JSX, components.
+
+I hope you all become proponents, 
+of props and state. 
+
+Don't be late, 
+because today we learn React. 
+```
+
 ## Learning Objectives
 
 By the end of this lecture you should be able to:
