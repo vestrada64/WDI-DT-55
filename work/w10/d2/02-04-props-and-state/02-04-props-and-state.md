@@ -200,6 +200,7 @@ Think of setState() as a request rather than an immediate command to update the 
 </em>
 </center>
 
+<br>
 
 Two ways to update state: 
 
@@ -217,10 +218,12 @@ this.setState((prevState) => ({
 From React docs: 
 
 <center>
+<em>
 If the next state depends on the previous state, we recommend using the updater function form.
+</em>
 </center>
 
-Above we have a callback passed to `setState()` that will update the `counter` property in `state`. Note that we are *updating a currently existing property on state not creating a new one*. In a complex application you may be updating a currently existing property in two ways simultaneously. Using a callback ensures that the second update does overwrite the first one.
+Above we have a callback passed to `setState()` that will update the `counter` property in `state`. **Note that we are *updating a currently existing property on state not creating a new one**. In a complex application you may be updating a currently existing property in two ways simultaneously. Using a callback ensures that the second update does overwrite the first one.
 
 ## React's Uni-Directional Data Flow
 
@@ -228,10 +231,9 @@ From React docs:
 
 <center>
 <em>[Passing props from parent to child component] is commonly called a "top-down" or "unidirectional" data flow. Any state is always owned by some specific component, and any data or UI derived from that state can only affect components "below" them in the tree.
-
+<br>
 If you imagine a component tree as a waterfall of props, each component's state is like an additional water source that joins it at an arbitrary point but also flows down.</em>
 </center>
-
 
 ## Where to Put State
 
@@ -241,8 +243,7 @@ For each piece of state in your application:
 * Find a common owner component (a single component above all the components that need the state in
 the hierarchy).
 * Either the common owner or another component higher up in the hierarchy should own the state.
-* If you can't find a component where it makes sense to own the state, create a new component simply for
-holding the state and add it somewhere in the hierarchy above the common owner component
+* If you can't find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component
 
 From React documentation:
 
@@ -256,7 +257,7 @@ Use `create-react-app` to create a multi-button incrementer. Your UI should look
 
 ![multi-inc](https://docs.google.com/drawings/d/e/2PACX-1vRILieQUnPXoYPkoNeblsG95SH0cxWG0oW34jmVMRUHKOkYK4lcNeEHLajkCbFruTbxeMZ1jCD5Gwms/pub?w=820&h=503)
 
-Whenever you click "Increment" the number above each button should increment by one.
+Whenever you click "Increment" the number above each and **every** button should increment by one.
 
 You should have two types of components: 
 
@@ -279,3 +280,10 @@ The component hierarchy should look like this:
 	<Incrementer />
 	<Incrementer />
 ```
+
+**Note that we display the same count four different times!**
+
+## Bonus Lab
+
+Build an app that looks like [this](https://5y1p5j4lrk.codesandbox.io/).
+
