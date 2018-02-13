@@ -56,8 +56,8 @@ Does `f(d) = V` help you write better code? Probably not, but it's a good starti
 As we've seen, React has several built-in components, such as `<input />`, that map to HTML elements. They are the only components that actually emit DOM elements in the browser. These components are often called **React Elements**.
 
 <details>
-<summary>**Syntatically, what distinguishes a built-in component from our user-defined components?**</summary>
-> React components are lower-cased, for example `<div>`.
+<summary>Syntatically, what distinguishes a built-in component from our user-defined components?</summary>
+> React components are lower-cased, for example "<div>".
 </details>
 
 #### User-defined Components
@@ -65,8 +65,8 @@ As we've seen, React has several built-in components, such as `<input />`, that 
 Our user-defined "custom" components must be capitalized.
 
 <details>
-<summary>Think for a moment: As we compose our app's UI with our custom components,  ultimately, **no UI, no elements, will be rendered in the browser window unless our components include what?**</summary>
-> React Elements - HTML is what the browser knows and loves.
+<summary>Think for a moment: As we compose our app's UI with our custom components,  ultimately, no UI, no elements, will be rendered in the browser window unless our components include what?</summary>
+> React Elements like "<div>" - HTML is what the browser knows and loves.
 </details>
 
 ## Categorizing Components as _Presentational_ or _Container_ Components
@@ -135,7 +135,7 @@ You can play what we're going to build [here](https://wdi-mastermind.herokuapp.c
 
 #### Generate the App
 
-Because you might want to add this project to your GitHub, move **outside** of the student repo then: `$ create-react-app react-mastermind`
+Because you **might** want to add this project to your GitHub, move **outside** of the student repo then: `$ create-react-app react-mastermind`
 
 After the process completes: `$ cd react-mastermind`
 
