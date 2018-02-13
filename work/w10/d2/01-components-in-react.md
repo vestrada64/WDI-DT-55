@@ -286,10 +286,6 @@ Assuming we want a component named `<GameBoard />`:
 	
 	export default App;
 	```
-	<details>
-	<summary>Why are the <header> and <GameBoard> components wrapped by a <div> component?</summary>
-	> Components can only return/render a single node. Why?
-	</details> 
 
 #### YOU DO: Write Another Component as a Stateless Function Component (5 mins):
 
