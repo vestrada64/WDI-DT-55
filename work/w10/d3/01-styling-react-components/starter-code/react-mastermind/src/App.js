@@ -13,7 +13,7 @@ class App extends Component {
       colors,
       code: this.genCode(colors.length),
       selColorIdx: 0,
-      guesses: [this.getNewGuess()]
+      guesses: [this.getNewGuess(), this.getNewGuess()]
     };
   }
 
