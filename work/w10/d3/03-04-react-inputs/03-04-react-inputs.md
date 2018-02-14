@@ -1,6 +1,6 @@
 ## Forms in React
 
-This lesson aims to cover:
+By the end of this lecture you should be able to: 
 
 * Use React to create forms with `<input>`, `<textarea>` and `<select>` tags
 * Know the differences between **controlled** and **uncontrolled** components
@@ -12,11 +12,11 @@ How do we grab an `<input>`'s value?
 
 Let take a look at [this](https://codepen.io/jtamsut/pen/yoERZB?editors=1010).
 
-React is just like jQuery in that in order to access a DOM nodes value (i.e., an `<input>`'s text) we call the `value` property - `DOMNode.value`)
+React is just like jQuery in that in order to access a DOM node's value (i.e., an `<input>`'s text) we call the `value` property on a DOM node - `DOMNode.value`)
 
 We also know that we can create a [melange](https://codepen.io/jtamsut/pen/MmxxXZ) of different input types by adjusting the `type` attribute on `<input>` tags.
 
-When working with an `<input>` tag in HTML the value of the `<input>`'s value is stored in the DOM.
+When working with an `<input>` tag in HTML the value of the `<input>`'s value is stored in the DOM (i.e., *literally* in the JS object that represents the DOM node).
 
 ```html
 <input type="text" class="get-value" name="email" placeholder="example@example.com">
@@ -34,7 +34,7 @@ From the React docs:
 
 > <em>"React components must represent the state of the view at any point in time and not only at initialization time"</em>
 
-Therefore whenever building out an input in React we are forced to keep track of the value of our input field. React encourages us to put whatever is in the input field at the time in state.
+Therefore whenever building out an input in React we are forced to keep track of the value of our input field. *React encourages us to put whatever is currently in the input field in state*.
 
 **React doesn't want us storing any data in the DOM. React wants us to store all data in state.**
 
@@ -42,33 +42,9 @@ This brings us to controlled components.
 
 ## Controlled Components
 
-A **controlled component** is an input form element where the value of the `value` attribute of the input field is always recorded in state. This state is then passed down to the input field in question as props. It is the `props` passed down that is displayed. Controlled components make use of the `onChange()` event listener which executes a callback each time an `onChange` event is fired. An `onChange` event is fired on an input field whenever anything is typed in an `<input>` or `<textarea>` field or whenever someone selects an option in a `<select>` tag.
+A **controlled component** is an input form element where the value of the `value` attribute of the input field is always recorded in state. This state is then passed down to the input field in question as `props`. It is the `props` passed down that is displayed. Controlled components make use of the `onChange()` event listener which executes a callback each time an `onChange` event is fired. An `onChange` event is fired on an input field whenever anything is typed in an `<input>` or `<textarea>` field or whenever someone selects an option in a `<select>` tag.
 
-Let's take a look at an example of a controlled input field [here](https://codepen.io/jtamsut/pen/OmqdmJ?editors=0001).
-
-```js
-class Input extends React.Component {
-  constructor() {
-    super();
-    this.state = {text: ""}
-  };
-
-  updateValue = (e) => {
-    this.setState({text: e.target.value});
-  };
-
-  render() {
-    return (
-      <div>
-          <input onChange={this.updateValue} value={this.state.text} />
-          <h2>{this.state.text}</h2>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Input />, document.getElementById('root'));
-```
+Let's take a look at an example of a controlled input field [![Edit m35vvx2jp9](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/m35vvx2jp9).
 
 In the above example the `updateValue` function updates state each time an `onChange` event is fired. You can see the value of `this.state.text` each time the render method is called. Remember that `setState` calls a component's `render()` method.
 
@@ -84,51 +60,22 @@ In HTML the `<textarea>` element defines its text by its children. HTML5 `<texta
 
 In React, a `<textarea>` tags *does* have a `value` attribute which corresponds to the text inside the `<textarea>` tag. This is similar to how `<input>` fields work. `<textarea>` tags in HTML are self-closing so they should be written like this `<textarea />`.
 
-#### You Do
+#### Exercise 1: Controlled textarea
 
-Make the `<textarea />` tag in [this](https://codepen.io/jtamsut/pen/vmPPGN?editors=1010) component a controlled component.
+Tak a look a look at the example here: [![Edit w0x48o5j68](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/w0x48o5j68)
+
+Finish the `updateValue` method in the `<TextArea>` component. This function should update the `text` property in state.
 
 ### Form Validation
 
-One common use of controlled components is form validation. Here is some form validation telling the user that the text in an input field must start with a lowercase letter:
+One common use of controlled components is form validation. Here is some form validation telling the user that the text in an input field must start with a lowercase letter.
 
-```js
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+Let's take a look at this code [![Edit 8xwwnzwv30](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/8xwwnzwv30).
 
-class FormValidator extends Component {
-  constructor() {
-    super();
-    this.state = {text: ""};
-  }
+## Exercise 2: Make an Email Validator
 
-  validateForm = (e) => {
-    let character = e.target.value[0];
-    if (character) {
-      if (character !== character.toLowerCase()) {
-        alert('Must start with a lower case letter');
-      }
-    }
-    this.setState({text: e.target.value});
-  }
-
-  render() {
-    return (
-      <input value={this.state.text} onChange={this.validateForm} />
-    )
-  }
-
-
-}
-
-ReactDOM.render(<FormValidator />, document.getElementById('root'));
-```
-
-We can see this code in action [here](https://codepen.io/jtamsut/pen/OjEaLr?editors=1010).
-
-## Yo Do
-
-Use [this](https://codepen.io/jtamsut/pen/JyZeEO?editors=1010) Codepen to write an email validation.
+Let's take a look at the start code:
+[![Edit 8139759m10](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/8139759m10)
 
 Let's create a controlled component that validates e-mail. Let's use RegEx to validate our e-mail.
 
@@ -143,7 +90,7 @@ The `validateEmail` function returns `true` if the e-mail passed to it is valid 
 
 ## Uncontrolled Components
 
-Writing every form using controlled components can be very tedious because you need to have an event handler for every way your form data can change. When this becomes too cumbersome you may want to use **uncontrolled components**. With uncontrolled components that value of a form is stored within the DOM itself.
+Writing every form using controlled components can be very tedious because you need to write an event handler for every way your form data can change (i.e., `onChange`, `onSubmit`, etc.). When this becomes too cumbersome you may want to use **uncontrolled components**. With uncontrolled components that value of a form is stored within the DOM itself.
 
 ### refs
 
