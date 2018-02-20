@@ -441,10 +441,5 @@ We can use the fetch API inside the `componentDidMount` life cycle method where 
 
 ## Lab 
 
-Make use of the JSONPlaceholder user API endpoint (`https://jsonplaceholder.typicode.com/users`) to render data for a given user. This application should allow you to search for a user based on name. It should also display the following data for each user:
-
-* Name (`name`)
-* Email (`email`)
-* Website(`website`)
-* Phone (`phone`)
+Use the following JSON Placeholder API Endpoint: `https://jsonplaceholder.typicode.com/posts?userId=1` to get all posts for a given user. 
 
