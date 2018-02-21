@@ -85,7 +85,7 @@ First, is that all AJAX requests in a React application should go inside the `co
 
 Second, since our AJAX request is asynchronous we will need to create some conditional logic in our JSX to render data only once its returned.
 
-Third, we have decided to make our AJAX request in our root component (`App.js`) and pass data down to our child components. Make note of this decision. Tomorrow we will learn about Redux which gives us hard requirements for how we configure our state.
+Third, we have decided to make our AJAX request in our root component (`App.js`) and pass data down to our child components. Make note of this decision. 
 
 ## Configuration 
 
