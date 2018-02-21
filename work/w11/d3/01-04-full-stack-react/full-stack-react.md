@@ -116,28 +116,28 @@ Take a look at those production ready files just ready to be served up by an Exp
 
 ## Code the Express App
 
-We're going code our own Express app from scratch. This will be easier than using `express-generator` since we're starting with a fully-built React app and want to build a server app "around" it within the same project.
+We're going to code our own Express app from scratch. This will be easier than using `express-generator` since we're starting with a fully-built React app and want to build a server app "around" it within the same project.
 
 #### Install the Modules for the Express Server
 
 The full-stack architecture we decided on uses a single **package.json** file (the one that was created by `create-react-app`).
 
-What's cool is that the backend Express server can share that **package.json** with the React front-end.
+What's cool is that the backend Express project will share that **package.json** with the React project.
 
 For now, we're only going to install a minimal number of modules for the Express app:
 
 `$ npm i express morgan serve-favicon`
 
-> Note: We don't need a view engine because our server will be either serving static assets (index.html & CSS and JS files) or responding to AJAX requests with JSON. There will not be any *.ejs templates rendered.
+> Note: We don't need a view engine because our server will be either serving static assets (index.html & CSS and JS files) or responding to AJAX requests with JSON. There will not be any *.ejs templates rendered - just a single index.html.
 
-In the future, to add additional features such as database access, we would install additional modules like `mongoose`, `body-parser`, `dotenv`, etc..
+In the future, to add additional features such as database access, etc., we would install additional modules like `mongoose`, `body-parser`, `dotenv`, etc..
 
 #### Create `server.js`
 
 Let's write our server:
 
 1. `$ touch server.js`.
-2. At the top of **server.js**, let's do all the familiar stuff: `require` the modules, create the Express app and mount the `morgan` logging middleware:
+2. At the top of **server.js**, let's do all the familiar stuff: `require` the modules; create the Express app; and mount the `morgan` logging middleware:
 
 	```js
 	var express = require('express');
@@ -168,17 +168,17 @@ Let's write our server:
 	  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 	});
 	```
-	> Note: Since this route is a "catch all" that matches every `get` request, be sure to mount API or other routes before it.
+	> Note: Since this route is a "catch all" that matches every `get` request, be sure to mount API or other routes before it!
 	
 	The "catch all" route is necessary for when:
 	- A user types a path into the address bar and presses enter.
-	- A link is clicked in an external website, email, etc., that has its `href` set to our SPA's URL.
+	- A link is clicked in an external website, email, etc., that has its `href` set to our SPA's hostname.
 
 	For example, we slack the following link to a friend: `https://myapp.herokuapp.com/sales/dashboard`. The friend clicks on it, initiating an HTTP request to our server.
 	
-	Now, the `/sales/dashboard` part of the URL is supposed to be for the client router - not the server!  But there it is, and the server has to deal with it...
+	However, the `/sales/dashboard` part of the URL is supposed to be for the client router - not the server!  But there it is, and the server has to deal with it...
 	
-	The server deals with it by, thanks to the "catch all" route, sending back  **index.html** (after all, it's all we've got). When **index.html** loads in the browser, and our SPA's router kicks into action, it will see the `/sales/dashboard` and route to the correct feature, just as if the link was clicked from within the SPA.
+	The server deals with it by, thanks to the "catch all" route, sending back  **index.html** - which is what we want. When **index.html** loads in the browser, and our SPA's router kicks into action, it will see the path of `/sales/dashboard` and route to the correct feature, just as if the link was clicked from within the SPA!
 
 5. Set the port for development to use 3001 so that React's dev server can continue to use 3000. Finally tell the Express app to listen for incoming requests:
 
@@ -240,7 +240,7 @@ You want to play Mastermind on your phone or have friends play it, right? Get it
 
 Once the Express server has been tested, it's **almost** ready to be deployed to Heroku.
 
-Heroku, if it does not have a **Procfile**, will look for a **start** script in **package.json**. Yes, we have a **start** script, but it's configured to start React's dev server - not our run **node server.js**.
+Heroku, if the project does not have a **Procfile**, will look for a **start** script in **package.json**. Yes, we have a **start** script, but it's configured to start React's dev server - not our run **node server.js**.
 
 The easy way out is to create that **Procfile**:
 
@@ -250,7 +250,7 @@ Then, adding a single line inside **Procfile** takes care of informing Heroku ho
 
 `web: node server.js`
 
-One more change, `create-react-app` creates an **.gitignore** file for the React project. You won't see it in the **starter code** because the **.gitignore** file itself was ignored by the student repo. However, your projects will have it and React adds a **/build** folder to the **.gitignore** which will prevent that important folder from being sent to Heroku.
+One more change, `create-react-app` creates an **.gitignore** file for the React project. You won't see it in the **starter code** because the **.gitignore** file itself was ignored by the student repo. However, your projects will have it and React adds the **/build** folder to the **.gitignore** which will prevent that important folder from being sent to Heroku.
 
 - You will need to comment this out in the **.gitignore**:
 
