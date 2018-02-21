@@ -290,7 +290,7 @@ Now that we've taken Mastermind full-stack, what better way to get some practice
 
 #### Super Bonus
 
-- If a score has made the list, how about letting the user know by moving to the high-score route! This requires that the `<App>` component be able to access `BrowserRouter`'s `history` object. However, this requires a refactor to ensure that:
+- If a score has made the list, how about letting the user know by moving to the high-score route! This requires that the `<App>` component be able to access `BrowserRouter`'s `history` object so that it can change routes "programmatically" using the `history.push()` method. However, this requires a refactor to ensure that:
 	- `<App>` is nested within `BrowserRouter`
 	- `<App>` is also wrapped by a `<Route>` component that has its `render` prop (vs. the simpler `component` prop) set to an arrow function that provides the `<Route>` props to `<App>` and returns `<App>` to be rendered. See `index.js` in the solution code for help. Note also the minor refactoring of routing within **App.jsx**. 
 
