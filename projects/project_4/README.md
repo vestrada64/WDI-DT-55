@@ -36,12 +36,12 @@ Your app should:
 ### Necessary Deliverables
 
 * A **working, full-stack application** that uses React on the front-end, that's hosted somewhere on the internet (Heroku).
-* Your application **MUST** have authentication.  The use os JSON Web Tokens for authentication/authorization **is HIGHLY recommended**.
+* Your application **MUST** have authentication.  The use of JSON Web Tokens for authentication/authorization **is HIGHLY recommended**.
 * A **git repository hosted on Github**, with a link to your hosted project and frequent commits dating back to the very beginning of the project.
 * A **`README.md` file** with:
     * **Introduction** to the app with a screenshot.
     * List of the **technologies** used.
-    * Links to your Trello board and deployed app.
+    * Links to your Trello board and deployed app in a **Getting Started** section.
     * Descriptions of any **Unsolved Problems** (if any).
     * Descriptions of **Future Enhancements**.
 
