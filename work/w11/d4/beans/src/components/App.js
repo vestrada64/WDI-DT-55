@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AllBeans from './AllBeans';
-import NewBean from './NewBean'
+import NewBean from './NewBean';
+import ShowBean from './ShowBean';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
 
 class App extends Component { 
@@ -84,6 +85,7 @@ class App extends Component {
                                                    description={this.state.beanDescription}
                                                    price={this.state.beanPrice} 
                                                    createBean={this.createBean} />} />
+                    <Route path="/beans/:id" render={ (props) => <ShowBean beanData={this.state.beans[props.match.params.id]} /> } />
                 </Switch>
             </div>
         )
