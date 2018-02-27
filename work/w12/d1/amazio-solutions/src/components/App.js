@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import {
-    Route
-} from 'react-router-dom'
-
+import { Route } from 'react-router-dom'
+// custom components below
 import Welcome from './Welcome'
 import Catalogue from './Catalogue'
 import Checkout from './Checkout'
@@ -16,9 +14,11 @@ import {
 class App extends Component {
 
     constructor() {
-        super()
+        super();
+        // items is a list of items that are currently filtered - default is all items 
+        // allItems is a list of all items
         this.state = {
-            items: null,
+            items: null, 
             allItems: null
         }
     }
@@ -28,23 +28,21 @@ class App extends Component {
             method: 'GET'
         }).then((data) => {
             return data.json()
-        }).then((jsonData) => {
-            console.log(jsonData)
+        }).then((jsonItems) => {
             this.setState({
-                items: jsonData,
-                allItems: jsonData
+                items: jsonItems, 
+                allItems: jsonItems
             })
         })
     }
 
-    addItem = (id) => {
-        console.log(id)
+    addItem = (e, id) => {
+        e.stopPropagation();
         fetch(`/api/add-product/${id}`)
             .then(data => data.json())
     }
 
     deleteItem = (id) => {
-        console.log(id)
         fetch(`/api/delete-product/${id}`)
         .then(data => data.json())
     }
@@ -61,8 +59,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Navbar brand='AMAZIO' right>
-                </Navbar>
+                <Navbar brand='AMAZIO' right></Navbar>
                 <div className="container">
                     <Route exact path="/" component={Welcome} />
                     <Route path="/catalogue" render ={() => <Catalogue items={this.state.items} 
