@@ -1,0 +1,26 @@
+/* 
+    CSS Colors
+    #7D8491 - green
+    #BBBE64 - light green
+    #EAF0CE - gray
+    #C0C5C1 - light blue
+    #443850 - dark blue
+
+*/
+
+.nav-wrapper{
+    background-color: #C0C5C1;
+    padding: 0 10px;
+}
+
+.brand-logo {
+    font-weight: 100;
+}
+
+button a {
+    color: #443850;
+}
+
+.amz-welcome {
+    margin-top: 25%;
+}

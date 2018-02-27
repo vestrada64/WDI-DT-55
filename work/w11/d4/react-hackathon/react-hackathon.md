@@ -9,7 +9,7 @@
 
 **The product**: You will be building a simple checkout sequence. This will be similar to Amazon in that a user will add catalogue items to a cart. You will then be able to purchase these items. 
 
-**Note**: You DO NOT need to have any concept of a *user* in this application. The only two models you will be creating will be a Products model and an Order model. 
+**Note**: You DO NOT need to have any concept of a *user* in this application. The only two models you will be creating will be a Products model and an Order model. **You should have a single document in your orders collection**. This application only needs to have a single order in it. All products should be added to this order!
 
 ## Application Specifications 
 
