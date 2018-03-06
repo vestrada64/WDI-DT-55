@@ -64,8 +64,8 @@ hammingDistance(3,3) //=> 0
 
 Write a function called `map` that accepts two parameters: a collection (a **collection** is either an array *or* an object in this context) and a callback function. The callback function should itself accept two parameters: 
 
-    1. The **first** parameter should correspond to each *element* or each *value* in the aforementioned collection
-    2. The **second** parameter should correspond to the **index** or **key** of each element, depending on whether the collection passed to `map` is an array or object
+1. The **first** parameter should correspond to each *element* or each *value* in the aforementioned collection
+2. The **second** parameter should correspond to the **index** or **key** of each element, depending on whether the collection passed to `map` is an array or object
 
 Here is a description of `map`s [function signature](https://developer.mozilla.org/en-US/docs/Glossary/Signature/Function) as well as its callback's function signature. 
 
