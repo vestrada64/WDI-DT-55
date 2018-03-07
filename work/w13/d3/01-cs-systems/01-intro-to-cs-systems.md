@@ -54,7 +54,7 @@ In the decimal numbering system each number to the left of the decimal symbol re
 
 4,719 can broken down into powers of 10 like this: 
 
-4,719 = 4&times;10<sup>3</sup> + 7&times;10<sup>2</sup> + 1&times;10<sup>1</sup> + 9&times;10<sup>1</sup>
+4,719 = 4&times;10<sup>3</sup> + 7&times;10<sup>2</sup> + 1&times;10<sup>1</sup> + 9&times;10<sup>0</sup>
 
 The **base** or **radix** is the number we multiply successive powers by to get the number we want in whatever numbering system we are using. That's why we say the decimal numbering system is base-10.
 
