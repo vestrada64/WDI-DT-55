@@ -14,22 +14,26 @@ let headFootStyle = {
   textAlign: 'center'
 };
 
+let colors = ['#155765', '#57652A', '#AB9353', '#4D2C3D'];
+
 class App extends Component {
   constructor(props) {
     super(props);
-    let colors = ['#155765', '#57652A', '#AB9353', '#4D2C3D'];
-    this.state = {
+    this.state = this.getInitialState();
+  }
+
+  getInitialState () {
+    return {
       colors,
       code: this.genCode(colors.length),
       selColorIdx: 0,
-      guesses: [this.getNewGuess(), this.getNewGuess(), this.getNewGuess(), this.getNewGuess()]
+      guesses: [this.getNewGuess()]
     };
   }
 
   getNewGuess() {
     return {
-      // code: [null, null, null, null],
-      code: [3, 2, 1, 0], // for testing purposes
+      code: [null, null, null, null],
       score: {
         perfect: 0,
         almost: 0
@@ -47,6 +51,14 @@ class App extends Component {
     return this.state.code.join() === this.state.guesses[lastGuess].code.join() ? lastGuess + 1 : 0;
   }
 
+  handleColorSelection = (colorIdx) => {
+    this.setState({ selColorIdx: colorIdx });
+  }
+
+  handleNewGame = (colorIdx) => {
+    this.setState({selColorIdx: colorIdx});
+  }
+
   render() {
     let winTries = this.getWinTries();
     return (
@@ -59,10 +71,11 @@ class App extends Component {
           />
           <div className="App-controls">
             <ColorPicker
+              handleColorSelection={this.handleColorSelection}
               selColorIdx={this.state.selColorIdx}
               colors={this.state.colors}
             />
-            <NewGameButton />
+            <NewGameButton handleNewGame={this.handleNewGame} />
           </div>
         </div>
         <footer style={headFootStyle}>{(winTries ? `You Won in ${winTries} Guesses!` : 'Good Luck!')}</footer>

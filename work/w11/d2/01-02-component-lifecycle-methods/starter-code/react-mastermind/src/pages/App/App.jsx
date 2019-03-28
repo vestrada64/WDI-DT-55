@@ -27,7 +27,8 @@ class App extends Component {
     return {
       code: this.genCode(colorTable[0].colors.length),
       selColorIdx: 0,
-      guesses: [this.getNewGuess()]
+      guesses: [this.getNewGuess()],
+      elapsedTime: 0
     };
   }
 
@@ -126,7 +127,28 @@ class App extends Component {
     });
   }
 
+  handleTick = () => {
+    this.setState(prevState => ({
+      elapsedTime: ++prevState.elapsedTime
+    }));
+  }
+
+  
+
+/* ------------- Life cycle methods ------------ */
+
+componentWillMount() {
+  console.log('App: componentWillMount');
+}
+
+componentDidMount() {
+  console.log('App: ComponentDidMount');
+}
+
+
+
   render() {
+    console.log('App: render');
     return (
       <div>
         <header className='header-footer'>R E A C T &nbsp;&nbsp; M A S T E R M I N D</header>
@@ -141,6 +163,9 @@ class App extends Component {
                   handleNewGameClick={this.handleNewGameClick}
                   handlePegClick={this.handlePegClick}
                   handleScoreClick={this.handleScoreClick}
+                  elapsedTime={this.state.elapsedTime}
+                  handleTick={this.handleTick}
+                  isTiming={!this.state.finalTime}
                 />}
               />
               <Route exact path='/settings' render={() => 

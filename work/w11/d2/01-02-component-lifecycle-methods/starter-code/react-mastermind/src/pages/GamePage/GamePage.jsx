@@ -4,6 +4,7 @@ import './GamePage.css';
 import GameBoard from '../../components/GameBoard/GameBoard';
 import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import NewGameButton from '../../components/NewGameButton/NewGameButton';
+import GameTimer from '../../components/GameTimer/GameTimer';
 
 const GamePage = (props) => {
 
@@ -19,12 +20,19 @@ const GamePage = (props) => {
           colors={props.colors}
           handlePegClick={props.handlePegClick}
           handleScoreClick={props.handleScoreClick}
+      
         />
         <div className="GamePage-controls">
           <ColorPicker
             handleColorSelection={props.handleColorSelection}
             colors={props.colors}
             selColorIdx={props.selColorIdx}
+          />
+          <GameTimer 
+            elapsedTime={props.elapsedTime}
+            handleTick={props.handleTick}
+            isTiming={props.isTiming}
+          
           />
           <Link className='btn btn-default' style={{margin: '0 10px'}} to='/settings'>Difficulty</Link>
           <NewGameButton handleNewGameClick={props.handleNewGameClick}/>

@@ -5,7 +5,7 @@ import './LoginPage.css';
 const LoginPage = (props) => {
   return (
     <div className='LoginPage'>
-      <LoginForm />
+      <LoginForm history={props.history} handleLogin={props.handleLogin} />
     </div>
   );
 };

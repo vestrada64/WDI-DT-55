@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import './App.css';
 import GamePage from '../GamePage/GamePage';
 import SettingsPage from '../SettingsPage/SettingsPage';
+import HighScoresPage from '../HighScoresPage/HighScoresPage';
 
 let colorTable = [
   {name: 'Easy', colors: ['#7CCCE5', '#FDE47F', '#E04644', '#B576AD']},
@@ -18,7 +15,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = Object.assign(
-      {difficultyLevel: 0, colors: colorTable[0].colors},
+      {difficultyLevel: 0, colors: colorTable[0].colors, scores: []},
       this.getInitialState()
     );
   }
@@ -54,6 +51,14 @@ class App extends Component {
       difficultyLevel: level,
       colors: colorTable[level].colors
     });
+  }
+
+  isHighScore = (guessesCopy) => {
+    let lastScore = this.state.scores[this.state.scores.length - 1];
+    return (guessesCopy.length < lastScore.numGuesses || (
+      guessesCopy.length === lastScore.numGuesses &&
+      this.state.finalTime < lastScore.seconds
+    ));
   }
 
   /*---------- Callback Methods ----------*/
@@ -121,14 +126,38 @@ class App extends Component {
     guessesCopy[currentGuessIdx].score.perfect = perfect;
     guessesCopy[currentGuessIdx].score.almost = almost;
 
-    // Add a new guess if not a winner
-    if (perfect !== 4) guessesCopy.push(this.getNewGuess());
+    if (perfect === 4) {
+      this.setState(
+        (prevState) => ({finalTime: prevState.elapsedTime}),
+        // do the rest of the win logic in this callback
+        () => {
+          if (this.state.scores.length < 20 || this.isHighScore(guessesCopy)) {
+            let initials = prompt('Congrats, you have a high score!\nPlease enter your initials:');
+            fetch('/api/scores', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({initials, numGuesses: guessesCopy.length, seconds: this.state.finalTime})
+            }).then(res => res.json())
+            .then(() => {
+              fetch('/api/highscores').then(res => res.json())
+              .then(highScores => {
+                this.setState({scores: highScores});
+                // Note how routing has been refactored in index.js
+                // so that we can access the history object
+                this.props.history.push('/high-scores');
+              });
+            });
+          }
+        }
+      );
+      // Check if high-score
+    } else {
+      // Add a new guess if not a winner
+      guessesCopy.push(this.getNewGuess());
+    }
 
     // Finally, update the state with the NEW guesses array
-    this.setState(prevState => ({
-      guesses: guessesCopy,
-      finalTime: (perfect === 4) ? prevState.elapsedTime : 0
-    }));
+    this.setState(prevState => ({guesses: guessesCopy}));
   }
 
   handleTick = () => {
@@ -137,36 +166,49 @@ class App extends Component {
     }));
   }
 
+  /*---------- Lifecycle Methods ----------*/
+
+  componentDidMount() {
+    fetch('/api/highscores').then(res => res.json())
+    .then(scores => {
+      this.setState({scores});
+    });
+  }
+
   render() {
     return (
       <div>
         <header className='header-footer'>R E A C T &nbsp;&nbsp; M A S T E R M I N D</header>
-        <Router>
-            <Switch>
-              <Route exact path='/' render={() =>
-                <GamePage
-                  colors={this.state.colors}
-                  selColorIdx={this.state.selColorIdx}
-                  guesses={this.state.guesses}
-                  handleColorSelection={this.handleColorSelection}
-                  handleNewGameClick={this.handleNewGameClick}
-                  handlePegClick={this.handlePegClick}
-                  handleScoreClick={this.handleScoreClick}
-                  elapsedTime={this.state.elapsedTime}
-                  handleTick={this.handleTick}
-                  isTiming={!this.state.finalTime}
-                />
-              }/>
-              <Route exact path='/settings' render={() => 
-                <SettingsPage
-                  colorTable={colorTable}
-                  difficultyLevel={this.state.difficultyLevel}
-                  handleDifficultyChange={this.setDifficulty}
-                  handleNewGame={this.handleNewGameClick}
-                />
-              }/>
-            </Switch>
-        </Router>
+        <Switch>
+          <Route exact path='/' render={() =>
+            <GamePage
+              colors={this.state.colors}
+              selColorIdx={this.state.selColorIdx}
+              guesses={this.state.guesses}
+              handleColorSelection={this.handleColorSelection}
+              handleNewGameClick={this.handleNewGameClick}
+              handlePegClick={this.handlePegClick}
+              handleScoreClick={this.handleScoreClick}
+              elapsedTime={this.state.elapsedTime}
+              interval={1000}
+              handleTick={this.handleTick}
+              isTiming={!this.state.finalTime}
+            />
+          }/>
+          <Route exact path='/settings' render={() => 
+            <SettingsPage
+              colorTable={colorTable}
+              difficultyLevel={this.state.difficultyLevel}
+              handleDifficultyChange={this.setDifficulty}
+              handleNewGame={this.handleNewGameClick}
+            />
+          }/>
+          <Route exact path='/high-scores' render={() => 
+            <HighScoresPage
+              scores={this.state.scores}
+            />
+          }/>
+        </Switch>
       </div>
     );
   }

@@ -5,7 +5,14 @@ var topscoresCtrl = require('../../controllers/topscores');
 /*---------- Protected Routes ----------*/
 
 // TODO: Protect this route with custom middleware
-router.get('/', topscoresCtrl.index);
+router.get('/', checkAuth, topscoresCtrl.index);
+
 
 
 module.exports = router;
+
+function checkAuth(req, res, next) {
+    if (req.user) return next();
+    return res.status(401).json({msg: 'not authenticated'});
+  }
+  

@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 import './App.css';
+import userService from '../../utils/userService';
 import GamePage from '../GamePage/GamePage';
 import SettingsPage from '../SettingsPage/SettingsPage';
 import SignupPage from '../SignupPage/SignupPage';
@@ -141,7 +143,25 @@ class App extends Component {
     }));
   }
 
+  handleLogout = () => {
+    userService.logout();
+    this.setState({user: null});
+  }
+
+  handleSignup = () => {
+    this.setState({user: userService.getUser()});
+  }
+
+  handleLogin = () => {
+    this.setState({user: userService.getUser()});
+  }
+
   /*---------- Lifecycle Methods ----------*/
+
+  componentDidMount() {
+    let user = userService.getUser();
+    this.setState({user});
+  }
 
   render() {
     return (
@@ -162,6 +182,8 @@ class App extends Component {
                 interval={1000}
                 handleTick={this.handleTick}
                 isTiming={!this.state.finalTime}
+                user={this.state.user}
+                handleLogout={this.handleLogout}
               />
             }/>
             <Route exact path='/settings' render={() => 
@@ -173,16 +195,25 @@ class App extends Component {
               />
             }/>
             <Route exact path='/signup' render={(props) => 
-              <SignupPage {...props}
+              <SignupPage 
+              {...props}
+                handleSignup={this.handleSignup}
                 
               />
             }/>
-            <Route exact path='/login' render={() => 
+            <Route exact path='/login' render={(props) => 
               <LoginPage
-                
+              {...props}
+                handleLogin={this.handleLogin}
+
               />
             }/>
-            <Route exact path='/topscores' component={TopScoresPage} />
+            <Route exact path='/topscores' render={() => (
+              userService.getUser() ?
+                <TopScoresPage />
+                    :
+                <Redirect to='/login' />
+            )}/>
           </Switch>
         </Router>
       </div>

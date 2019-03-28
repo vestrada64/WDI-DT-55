@@ -11,7 +11,7 @@ const ScoresTable = (props) => {
   }
 
   return (
-    <table className='table table-striped' style={{width: 300}}>
+    <table className='table table-striped table-bordered' style={{width: 300}}>
       <thead>
         <tr>
           <th>Player</th>
@@ -20,8 +20,8 @@ const ScoresTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.scores.map(score => 
-          <tr key={score.player}>
+        {props.scores.map((score, i) => 
+          <tr key={i}>
             <td>{score.player}</td>
             <td>{score.guesses}</td>
             <td>{formatElapsedTime(score.seconds)}</td>

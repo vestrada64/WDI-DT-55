@@ -1,3 +1,7 @@
+var $li = document.querySelectorAll('li')
+console.dir($li)
+$li.style.color= "red"
+
 var languages = document.querySelectorAll('.language-list li');
 
 // What is the difference between what 
